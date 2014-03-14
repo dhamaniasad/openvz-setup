@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if being run as root
+
+if [ $USER != 'root' ]; then
+echo "Sorry, you need to run this script as root."
+exit
+fi
+
 # Install OpenVZ repo
 
 wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
@@ -50,10 +57,10 @@ echo $'centos-6-x86 \n debian-7.0-x86 \n ubuntu-12.04-x86 \n ubuntu-13.10-x86 \n
 
 # Reboot System
 
-$PRINTF_PATH "The system must go down for reboot now. Press Y to reboot or N to end the execution of this script."
+$PRINTF_PATH "The system must go down for reboot now. Press Y to reboot or N to end the execution of this script :"
 	read key
 	until [ "${key}" = "Y" ] || [ "${key}" = "N" ]; do
-		$PRINTF_PATH " \n Please enter a valid option"
+		$PRINTF_PATH " \n Please enter a valid option :"
 			read version
     done
 	if [ "${key}" = "Y" ]; then
