@@ -1,7 +1,11 @@
-centos-vz
+openvz-setup
 =========
 
-CentOS 6 OpenVZ setup script
+CentOS 6 and Debian 7 OpenVZ setup script
+
+### Introduction
+
+This is a setup script which automatically installs and configures OpenVZ on a server running either CentOS 6 or Debian 7. No manual intervention is required. If you prefer using a panel, please have a look at [my other project](https://github.com/dhamaniasad/vzvirtpanel).
 
 ### Installation
 
