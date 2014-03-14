@@ -58,12 +58,11 @@ echo $'centos-6-x86\ndebian-7.0-x86\nubuntu-12.04-x86\nubuntu-13.10-x86\n'
 # Reboot System
 
 echo $'The system must go down for reboot now. Press Y to reboot or N to end the execution of this script :'
-	read key
 	until [ "${key}" = "Y" ] || [ "${key}" = "N" ]; do
 		echo $'\n Please enter a valid option :'
 		read key
 	if [ "${key}" = "Y" ]; then
 reboot
-		else
-			exit 0
-      fi
+else
+exit 0
+fi
