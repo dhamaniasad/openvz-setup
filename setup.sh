@@ -61,7 +61,6 @@ echo $'The system must go down for reboot now. Press Y to reboot or N to end the
 	read key
 	until [ "${key}" = "Y" ] || [ "${key}" = "N" ]; do
 		echo $'\n Please enter a valid option :'
-    done
 	if [ "${key}" = "Y" ]; then
 reboot
 		elif [ "${key}" = "N" ]; then
