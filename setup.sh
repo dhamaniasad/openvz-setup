@@ -55,14 +55,5 @@ echo $'OpenVZ has now been setup and configured\n'
 echo $'Four OpenVZ templates have been added to the system:\n'
 echo $'centos-6-x86\ndebian-7.0-x86\nubuntu-12.04-x86\nubuntu-13.10-x86\n'
 
-# Reboot System
+# Reboot System : Ah crap, unable to figure out key input, wait for it...
 
-echo $'The system must go down for reboot now. Press Y to reboot or N to end the execution of this script :'
-	until [ "${key}" = "Y" ] || [ "${key}" = "N" ]; do
-		echo $'\n Please enter a valid option :'
-		read key
-	if [ "${key}" = "Y" ]; then
-reboot
-else
-exit 0
-fi
