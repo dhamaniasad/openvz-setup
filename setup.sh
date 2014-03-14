@@ -64,6 +64,6 @@ echo $'The system must go down for reboot now. Press Y to reboot or N to end the
 		read key
 	if [ "${key}" = "Y" ]; then
 reboot
-		elif [ "${key}" = "N" ]; then
+		else
 			exit 0
       fi
