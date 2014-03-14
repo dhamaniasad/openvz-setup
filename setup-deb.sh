@@ -7,36 +7,25 @@ echo "Sorry, you need to run this script as root."
 exit
 fi
 
-# Install OpenVZ repo
+# Add APT repo
 
-wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
-rpm --import http://ftp.openvz.org/RPM-GPG-Key-OpenVZ
+cat << EOF > /etc/apt/sources.list.d/openvz-rhel6.list
+deb http://download.openvz.org/debian wheezy main
+# deb http://download.openvz.org/debian wheezy-test main
+EOF
+
+# Import GPG key
+
+wget http://ftp.openvz.org/debian/archive.key
+apt-key add archive.key
+
+# Update APT DB
+
+apt-get update
 
 # Install OpenVZ Kernel
 
-yum -y install vzkernel
-
-# Disable SELinux
-
-echo "SELINUX=disabled" > /etc/sysconfig/selinux
-
-# Install VZ Tools
-
-yum -y install vzctl
-yum -y install vzquota
-yum -y install ploop
-
-# Download templates
-
-wget -P /vz/template/cache http://download.openvz.org/template/precreated/centos-6-x86.tar.gz
-wget -P /vz/template/cache http://download.openvz.org/template/precreated/debian-7.0-x86.tar.gz
-wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-12.04-x86.tar.gz
-wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-13.10-x86.tar.gz
-
-# Disable iptables
-
-/etc/init.d/iptables stop
-chkconfig iptables off
+apt-get -y install linux-image-openvz-amd64
 
 # System configuration
 
@@ -48,6 +37,17 @@ echo 'net.ipv4.conf.default.proxy_arp = 0' >> /etc/sysctl.conf
 echo 'net.ipv4.conf.all.rp_filter = 1' >> /etc/sysctl.conf
 echo 'net.ipv4.conf.default.send_redirects = 1' >> /etc/sysctl.conf
 echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
+
+# Install OpenVZ tools
+
+apt-get -y install vzctl vzquota ploop vzstats
+
+# Download templates
+
+wget -P /vz/template/cache http://download.openvz.org/template/precreated/centos-6-x86.tar.gz
+wget -P /vz/template/cache http://download.openvz.org/template/precreated/debian-7.0-x86.tar.gz
+wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-12.04-x86.tar.gz
+wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-13.10-x86.tar.gz
 
 # Announcements
 
