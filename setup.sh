@@ -51,9 +51,9 @@ echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
 
 # Announcements
 
-echo $'OpenVZ has now been setup and configured \n'
-echo $'Four OpenVZ templates have been added to the system: \n'
-echo $'centos-6-x86 \n debian-7.0-x86 \n ubuntu-12.04-x86 \n ubuntu-13.10-x86 \n'
+echo $'OpenVZ has now been setup and configured\n'
+echo $'Four OpenVZ templates have been added to the system:\n'
+echo $'centos-6-x86\ndebian-7.0-x86\nubuntu-12.04-x86\nubuntu-13.10-x86\n'
 
 # Reboot System
 
