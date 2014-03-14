@@ -49,6 +49,16 @@ wget -P /vz/template/cache http://download.openvz.org/template/precreated/debian
 wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-12.04-x86.tar.gz
 wget -P /vz/template/cache http://download.openvz.org/template/precreated/ubuntu-13.10-x86.tar.gz
 
+# Update grub conf
+
+update-grub
+
+# Modify default kernel to OpenVZ
+
+sed -i 'GRUB_DEFAULT=0/GRUB_DEFAULT=2/g' /etc/default/grub
+
+update-grub
+
 # Announcements
 
 echo $'OpenVZ has now been setup and configured\n'
